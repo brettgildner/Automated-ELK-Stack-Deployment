@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 https://drive.google.com/file/d/1cVY9Z5iZbgCxEjB017IaD4wNvYBhG0ur/view?usp=sharing
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Red-Team-NSG file may be used to install only certain pieces of it, such as Filebeat.
 
   GNU nano 4.8                                                               filebeat-playbook.yml                                                                          ---
 - name: installing and launching filebeat
@@ -96,7 +96,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+<img width="630" alt="VNET_diagram" src="https://user-images.githubusercontent.com/85353387/140572948-759e659b-833c-437a-95d7-e010487c19e7.png">
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -104,9 +104,11 @@ This ELK server is configured to monitor the following machines:
 - Web-2 (10.1.0.6)
 
 We have installed Filebeat and Metricbeat on the machines.
+   
+<img width="870" alt="Filebeat screenshot" src="https://user-images.githubusercontent.com/85353387/140571708-ad42acdc-a8a2-41eb-b34f-b3af384936f4.png">
+<img width="905" alt="Metricbeat screenshot" src="https://user-images.githubusercontent.com/85353387/140571728-dbc7d4a1-fbd5-4d0b-ae89-aed5d8f2ff9c.png">
 
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+While monitoring, Filebeat uses harvesters (to individually read the content of a single file) and inputs (to manage the harvesters) to keep a state of each file it finds to be analyzed. Similarly, Metricbeat collects data and allows you to access it in a user-friendly format (such as CPU and memory usage, disk space and inbound/outbound traffic, as seen in the screenshot provided). 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -114,13 +116,13 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy filebeat-configuration.yml to /etc/ansible/roles.
 - Update filebeat-configuration.yml to include the ELK IP in lines 1106/1806, as formatted.
-- Run the playbook, and navigate to http://13.92.153.39:5601/ to check that the installation worked as expected.
+- Run the playbook, and navigate to http://13.82.175.97:5601/ to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? filebeat-playbook.yml
 -  Where do you copy it? /etc/ansible/roles
 - _Which file do you update to make Ansible run the playbook on a specific machine? /etc/ansible/hosts
 - How do I specify which machine to install the ELK server on versus which to install Filebeat on? 
-- _Which URL do you navigate to in order to check that the ELK server is running? http://13.92.153.39:5601/
+- _Which URL do you navigate to in order to check that the ELK server is running? http://13.82.175.97:5601/
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
