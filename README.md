@@ -6,36 +6,7 @@ https://drive.google.com/file/d/1cVY9Z5iZbgCxEjB017IaD4wNvYBhG0ur/view?usp=shari
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Red-Team-NSG file may be used to install only certain pieces of it, such as Filebeat.
 
-  GNU nano 4.8                                                               filebeat-playbook.yml                                                                          ---
-- name: installing and launching filebeat
-  hosts: webservers
-  become: yes
-  tasks:
-
-  - name: download filebeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb
-
-  - name: install filebeat deb
-    command: dpkg -i filebeat-7.4.0-amd64.deb
-
-  - name: drop in filebeat.yml
-    copy:
-      src: /etc/ansible/files/filebeat-config.yml
-      dest: /etc/filebeat/filebeat.yml
-
-  - name: enable and configure system module
-    command: filebeat modules enable system
-
-  - name: setup filebeat
-    command: filebeat setup
-
-  - name: start filebeat service
-    command: service filebeat start
-
-  - name: enable service filebeat on boot
-    systemd:
-      name: filebeat
-      enabled: yes
+https://github.com/brettgildner/Homework_13/blob/main/filebeat-playbook.yml                                                           
 
 This document contains the following details:
 - Description of the Topologu
